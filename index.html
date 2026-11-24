@@ -1374,12 +1374,22 @@
         draw(Math.round(cur));
       }
       function draw(i) {
-        var im = null, k = i;
-        for (var d = 0; d <= 8 && !im; d++) {
-          if ((im = got(i - d))) k = i - d;
-          else if (d && (im = got(i + d))) k = i + d;
+        var im = got(i), k = i;
+        if (!im) {
+          var maxDist = Math.max(i, N - 1 - i);
+          for (var d = 1; d <= maxDist; d++) {
+            if (i - d >= 0 && (im = got(i - d))) { k = i - d; break; }
+            if (i + d < N && (im = got(i + d))) { k = i + d; break; }
+          }
         }
-        if (!im || k === shown) return;
+        if (!im) {
+          if (shown === -1) {
+            ctx.fillStyle = '#cfe6fb';
+            ctx.fillRect(0, 0, cv.width, cv.height);
+          }
+          return;
+        }
+        if (k === shown) return;
         shown = k;
         var cw = cv.width, ch = cv.height;
         var scale = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
