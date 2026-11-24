@@ -432,6 +432,7 @@
       grid-template-columns: 1fr auto;
       grid-template-areas:
         "statement statement"
+        "stats     stats"
         "heading   portrait"
         "cols      cols";
       column-gap: 48px;
@@ -644,6 +645,7 @@
         grid-template-areas:
           "portrait"
           "statement"
+          "stats"
           "heading"
           "cols";
         row-gap: 32px;
@@ -939,24 +941,25 @@
 
     /* ===== Stats ===== */
     .stats {
+      grid-area: stats;
+      width: 100%;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
-      padding: 96px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding: clamp(5rem, 7vw, 120px) 0;
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
     }
 
     .stat-item {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       gap: 12px;
-      padding: 16px 32px;
-    }
-
-    .stat-item:first-child {
-      padding-left: 0;
+      padding: 8px 24px;
     }
 
     .stat-item:not(:first-child) {
@@ -987,7 +990,7 @@
 
     @media (max-width: 900px) {
       .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .stat-item {
@@ -1005,12 +1008,8 @@
     }
 
     @media (max-width: 640px) {
-      .stats {
-        padding: 72px 0;
-      }
-
       .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .stat-item {
@@ -1384,6 +1383,26 @@
             <p class="statement">I’m a Sr.graphic &amp; UI/UX designer with <span>5 years</span> of hands-on experience creating
               visual identities, packaging, posters, social media creatives, banners, and digital experiences.</p>
           </div>
+          <section class="stats" id="stats">
+            <div class="stats-grid" id="stats-grid">
+              <div class="stat-item">
+                <span class="stat-num"><span class="stat-val" data-target="5">0</span><span class="stat-suffix">+</span></span>
+                <span class="stat-label">Years of experience</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num"><span class="stat-val" data-target="100">0</span><span class="stat-suffix">+</span></span>
+                <span class="stat-label">Projects delivered</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num"><span class="stat-val" data-target="50">0</span><span class="stat-suffix">+</span></span>
+                <span class="stat-label">Clients served</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num"><span class="stat-val" data-target="10">0</span><span class="stat-suffix">+</span></span>
+                <span class="stat-label">Brands launched</span>
+              </div>
+            </div>
+          </section>
           <div class="about-heading-slot">
             <h2 class="serif92">What I bring to the table</h2>
           </div>
@@ -1570,29 +1589,6 @@
             <path d="M9 5l7 7-7 7" />
           </svg>
         </button>
-      </div>
-    </section>
-
-    <section class="stats" id="stats">
-      <div class="wrap">
-        <div class="stats-grid" id="stats-grid">
-          <div class="stat-item">
-            <span class="stat-num"><span class="stat-val" data-target="5">0</span><span class="stat-suffix">+</span></span>
-            <span class="stat-label">Years of experience</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num"><span class="stat-val" data-target="100">0</span><span class="stat-suffix">+</span></span>
-            <span class="stat-label">Projects delivered</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num"><span class="stat-val" data-target="50">0</span><span class="stat-suffix">+</span></span>
-            <span class="stat-label">Clients served</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num"><span class="stat-val" data-target="10">0</span><span class="stat-suffix">+</span></span>
-            <span class="stat-label">Brands launched</span>
-          </div>
-        </div>
       </div>
     </section>
 
