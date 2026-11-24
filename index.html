@@ -748,10 +748,17 @@
 
     #work .hd {
       justify-content: center;
+      padding: 80px 0 0;
     }
 
     #work .hd .serif92 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -.02em;
       text-align: center;
+      margin: 0;
     }
 
     .works .hl2 {
@@ -769,10 +776,14 @@
     }
 
     .work-sub {
-      font: 400 clamp(1.5rem, 2.4vw, 36px)/1.15 var(--serif);
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      line-height: 1.1;
       letter-spacing: -.02em;
       color: #0a0a0a;
-      margin: 0 0 8px;
+      margin: 0;
+      padding: 32px 0 24px;
     }
 
     /* ===== Work Carousels ===== */
@@ -1618,9 +1629,7 @@
 
     <section class="works uiux" id="uiux">
       <div class="wrap">
-        <div class="hd">
-          <h2 class="serif92">UI/UX Works</h2>
-        </div>
+        <h3 class="work-sub">UI/UX Works</h3>
       </div>
       <div class="carousel" data-carousel>
         <button type="button" class="carousel-btn prev" aria-label="Previous project">
