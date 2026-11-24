@@ -272,18 +272,27 @@
     }
 
     .b2 {
-      bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(1.5rem, 7vh, 4.5rem));
-      left: clamp(1.25rem, 5vw, 4.5rem);
-      right: clamp(1.25rem, 5vw, 4.5rem);
+      top: 43%;
+      height: 33%;
+      left: 29%;
+      width: 33%;
+      max-width: 33%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1%;
+      box-sizing: border-box;
       color: #fff
     }
 
     .b2 h2 {
       font-family: var(--serif);
       font-weight: 400;
-      font-size: clamp(2.4rem, 5.4vw, 6rem);
-      line-height: 1;
-      max-width: 13ch
+      font-size: clamp(1.4rem, 2.3vw, 2.8rem);
+      line-height: 1.15;
+      max-width: 100%;
+      margin: 0
     }
 
     .b2 h2 em,
@@ -883,12 +892,22 @@
       .sub { max-width: 12em }
       .hi, .sub { text-shadow: 0 0 12px rgba(255, 255, 255, .75) }
       .hr p.big { text-shadow: 0 1px 4px rgba(0, 0, 0, .45), 0 1px 14px rgba(0, 0, 0, .6) }
-      .b2 h2 { font-size: clamp(2rem, 10vw, 2.4rem) }
+      .b2 h2 { font-size: clamp(1rem, 5vw, 1.4rem) }
     }
 
     /* phones and small tablets: keep social links readable over the photo */
     @media (max-width:760px) {
       .contact .soc a, .contact .c3 { text-shadow: 0 1px 10px rgba(0, 0, 0, .45) }
+      .b2 {
+        left: 4%;
+        width: 88%;
+        max-width: 88%;
+        top: 43%;
+        height: 33%
+      }
+      .b2 h2 {
+        font-size: clamp(1.1rem, 5.2vw, 1.8rem)
+      }
     }
 
     /* short landscape screens (phones held sideways) */
@@ -902,8 +921,7 @@
       .hr p.big { font-size: clamp(1.2rem, 5.8vh, 1.9rem) }
       .hi { font-size: .7rem; margin-bottom: .35rem }
       .sub { font-size: .68rem; margin-top: .35rem }
-      .b2 { bottom: 1rem }
-      .b2 h2 { font-size: clamp(1.6rem, 9vh, 3rem) }
+      .b2 h2 { font-size: clamp(1rem, 6vh, 1.8rem) }
       .b3 { padding: 1rem }
     }
   </style>
