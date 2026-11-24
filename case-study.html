@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Case study – Abhiraj Rajeev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: dark; --bg: #0a0a0a; --fg: #fff; --mut: rgba(255, 255, 255, .65) }
+  *, *::before, *::after { box-sizing: border-box }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100% }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.4 Inter, system-ui, -apple-system, "Segoe UI", sans-serif }
+  .bar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 16px;
+    padding: max(10px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+    background: rgba(10, 10, 10, .82); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, .08) }
+  .back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px;
+    background: #fff; color: #111; text-decoration: none; font-weight: 500; font-size: 15px; white-space: nowrap;
+    -webkit-tap-highlight-color: transparent }
+  .back:hover { background: #e9e9e9 }
+  .ttl { min-width: 0; font-weight: 500; font-size: 15px; color: var(--mut); overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+  main { max-width: 1400px; margin: 0 auto }
+  main img { display: block; width: 100%; height: auto; background: #111 }
+  main.gap { display: grid; gap: 16px; padding: 16px max(16px, env(safe-area-inset-right)) 16px max(16px, env(safe-area-inset-left)) }
+  main.gap img { border-radius: 8px }
+  .end { text-align: center; padding: 40px 16px calc(48px + env(safe-area-inset-bottom)) }
+  .msg { padding: 80px 20px; text-align: center; color: var(--mut) }
+  @media (max-width: 480px) { .ttl { font-size: 14px } .back { padding: 0 14px } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="back" id="back" href="index.html#work"><span aria-hidden="true">&larr;</span> Back to portfolio</a>
+  <div class="ttl" id="ttl"></div>
+</header>
+<main id="m"></main>
+<div class="end" id="end"></div>
+<noscript><p class="msg">Please enable JavaScript to view this case study.</p></noscript>
+<script>
+(function () {
+  var CASES = {"malavo":{"title":"Malavo \u2013 Packaging","back":"index.html#work","gap":false,"files":[["malavo-01.webp",1920,6917]]},"briso":{"title":"Briso \u2013 Branding","back":"index.html#work","gap":false,"files":[["briso-01.webp",1920,7812],["briso-02.webp",1920,5148]]},"linkedin":{"title":"LinkedIn Posts","back":"index.html#work","gap":false,"files":[["linkedin-01.webp",3240,4629],["linkedin-02.webp",3240,2008]]},"kerala":{"title":"Kerala Blasters \u2013 Creative Works","back":"index.html#work","gap":false,"files":[["kerala-01.webp",3240,4485]]},"wishes":{"title":"Wishes Creatives","back":"index.html#work","gap":false,"files":[["wishes-01.webp",3240,4629],["wishes-02.webp",3240,791]]},"social":{"title":"Social Media Dump","back":"index.html#work","gap":false,"files":[["social-01.webp",3240,4629],["social-02.webp",3240,4629],["social-03.webp",3240,4629],["social-04.webp",3240,4629],["social-05.webp",3240,4629],["social-06.webp",3240,4629],["social-07.webp",3240,4629],["social-08.webp",3240,170]]},"marketing":{"title":"Marketing Design \u2013 OrthoFX","back":"index.html#work","gap":false,"files":[["marketing-01.webp",1920,7812],["marketing-02.webp",1920,7812],["marketing-03.webp",1920,2614]]},"presentation":{"title":"Presentation","back":"index.html#work","gap":false,"files":[["presentation-01.webp",1920,7812],["presentation-02.webp",1920,7812],["presentation-03.webp",1920,5180]]},"morpho":{"title":"Morpho.ai \u2013 A UX Design AI Copilot","back":"index.html#uiux","gap":false,"files":[["morpho-01.webp",3240,4629],["morpho-02.webp",3240,4629],["morpho-03.webp",3240,4629],["morpho-04.webp",3240,4629],["morpho-05.webp",3240,4629],["morpho-06.webp",3240,4629],["morpho-07.webp",3240,4629],["morpho-08.webp",3240,4629],["morpho-09.webp",3240,4629],["morpho-10.webp",3240,4629],["morpho-11.webp",3240,4629],["morpho-12.webp",3240,566]]},"saelith":{"title":"Saelith \u2013 Branding","back":"index.html#work","gap":true,"files":[["saelith-01.webp",1920,1080],["saelith-02.webp",1920,1080],["saelith-03.webp",1920,1080],["saelith-04.webp",1920,1080],["saelith-05.webp",1920,1080],["saelith-06.webp",1920,1080],["saelith-07.webp",1920,1080],["saelith-08.webp",1920,1080]]},"logofolio":{"title":"Logofolio \u2013 Logos","back":"index.html#work","gap":true,"files":[["logofolio-01.webp",1920,1080],["logofolio-02.webp",1920,1080],["logofolio-03.webp",1920,1080],["logofolio-04.webp",1920,1080],["logofolio-05.webp",1920,1080],["logofolio-06.webp",1920,1080],["logofolio-07.webp",1920,1080],["logofolio-08.webp",1920,1080],["logofolio-09.webp",1920,1080],["logofolio-10.webp",1920,1080],["logofolio-11.webp",1920,1080]]},"rahman":{"title":"A.R. Rahman \u2013 Official Website Design","back":"index.html#uiux","gap":false,"files":[["rahman-01.webp",3166,4737],["rahman-02.webp",3166,4737],["rahman-03.webp",3166,4737],["rahman-04.webp",3166,4737],["rahman-05.webp",3166,4737],["rahman-06.webp",3166,4737],["rahman-07.webp",3166,4737],["rahman-08.webp",3166,4737],["rahman-09.webp",3166,4737],["rahman-10.webp",3166,4737],["rahman-11.webp",3166,3912]]},"wmb":{"title":"WMB Baggage Tracking App \u2013 UX Case Study","back":"index.html#uiux","gap":false,"files":[["wmb-01.webp",2800,5357],["wmb-02.webp",2800,5357],["wmb-03.webp",2800,5357],["wmb-04.webp",2800,5357],["wmb-05.webp",2800,5357],["wmb-06.webp",2800,5357],["wmb-07.webp",2800,5357],["wmb-08.webp",2800,5357],["wmb-09.webp",2800,5357],["wmb-10.webp",2800,5315]]},"tuto":{"title":"Tuto \u2013 AI Assisted Learning App for Kids","back":"index.html#uiux","gap":false,"files":[["tuto-01.webp",3240,4629],["tuto-02.webp",3240,4629],["tuto-03.webp",3240,4629],["tuto-04.webp",3240,4629],["tuto-05.webp",3240,4629],["tuto-06.webp",3240,4629],["tuto-07.webp",3240,4629],["tuto-08.webp",3240,4629],["tuto-09.webp",3240,4629],["tuto-10.webp",3240,4162]]}};
+  var m = document.getElementById('m'), end = document.getElementById('end');
+  var p = (new URLSearchParams(location.search).get('p') || '').toLowerCase();
+  var c = CASES[p];
+  if (!c) {
+    m.innerHTML = '<p class="msg">That case study could not be found.</p>';
+    end.innerHTML = '<a class="back" href="index.html#work">&larr; Back to portfolio</a>';
+    return;
+  }
+  document.title = c.title + ' – Abhiraj Rajeev';
+  document.getElementById('ttl').textContent = c.title;
+  document.getElementById('back').href = c.back;
+  if (c.gap) m.className = 'gap';
+  c.files.forEach(function (f, i) {
+    var im = new Image();
+    im.src = 'assets/case/' + p + '/' + f[0];
+    im.width = f[1]; im.height = f[2];
+    im.alt = c.title + ' – part ' + (i + 1) + ' of ' + c.files.length;
+    im.decoding = 'async';
+    if (i > 1) im.loading = 'lazy';
+    m.appendChild(im);
+  });
+  end.innerHTML = '<a class="back" href="' + c.back + '">&larr; Back to portfolio</a>';
+})();
+</script>
+</body>
+</html>

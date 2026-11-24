@@ -1,0 +1,34 @@
+DEPLOY ON VERCEL
+================
+This folder is the complete static website. Deploy the CONTENTS of this folder
+so index.html is at the deployment root, alongside case-study.html, vercel.json,
+assets/, frames-hd/ and frames-4k/.
+
+RECOMMENDED: Vercel CLI (reliable for the many animation-frame files)
+  1. Install Node.js.
+  2. Open Terminal in this folder.
+  3. Run: npm install -g vercel
+  4. Run: vercel --prod
+  5. If prompted, select your Vercel account/team and create or link a project.
+     Framework preset: Other. No build command is required. Deploy the current
+     directory as the static output (do not select a nested folder).
+
+GITHUB OPTION
+  1. Create a repository and put all CONTENTS of this folder at its root.
+  2. Use GitHub Desktop or Git command line to commit and push all files.
+     Avoid uploading the animation folders through GitHub's browser uploader;
+     there are many individual frame files.
+  3. Import the repository into Vercel. Select Framework Preset: Other and leave
+     the build command empty. The project root must contain index.html.
+
+AFTER DEPLOYMENT, TEST THESE URLS (each should display an image):
+  https://YOUR-SITE.vercel.app/frames-hd/f001.webp
+  https://YOUR-SITE.vercel.app/frames-hd/f192.webp
+  https://YOUR-SITE.vercel.app/case-study.html?p=social
+
+PERFORMANCE NOTES
+  The intro uses 192 scroll-controlled WebP frames. The updated player uses the
+  1080p sequence on all devices, loads frames near the current scroll position,
+  keeps a small decoded-image cache, and does not prefetch all 192 frames.
+  The 4K frame folder is retained in this package for source preservation, but
+  the current player does not request it.
