@@ -510,66 +510,79 @@
     .cols {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 24px;
+      align-items: stretch;
     }
 
     .col {
       position: relative;
-      background: #f5f5f5;
-      border-radius: 24px;
+      border-radius: 20px;
       padding: 32px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: none;
       display: flex;
       flex-direction: column;
       gap: 18px;
       line-height: 1.5;
+      overflow: hidden;
     }
+
+    .col::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .col:nth-child(1) { background: #eef3f9; }
+    .col:nth-child(1)::before { background: #2770c4; }
+
+    .col:nth-child(2) { background: #f4f1ec; }
+    .col:nth-child(2)::before { background: #a05a2c; }
+
+    .col:nth-child(3) { background: #f1f5f0; }
+    .col:nth-child(3)::before { background: #2e7d5a; }
+
+    .col:nth-child(4) { background: #f5f0f4; }
+    .col:nth-child(4)::before { background: #8a4f7d; }
+
+    .col:nth-child(5) { background: #eef4f5; }
+    .col:nth-child(5)::before { background: #2b7a84; }
+
+    .col:nth-child(6) { background: #f3f2f8; }
+    .col:nth-child(6)::before { background: #5e548e; }
 
     @media (prefers-reduced-motion: no-preference) {
       .col {
-        transition: transform .25s cubic-bezier(.16, 1, .3, 1);
+        transition: transform 0.3s ease;
       }
-
-      .col::after {
-        transition: opacity .25s cubic-bezier(.16, 1, .3, 1);
-      }
-    }
-
-    .col::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, .08), 0 4px 12px -2px rgba(0, 0, 0, .04);
-      opacity: 0;
-      pointer-events: none;
     }
 
     @media (hover: hover) and (pointer: fine) {
       .col:hover {
-        transform: translateY(-4px);
-      }
-
-      .col:hover::after {
-        opacity: 1;
+        transform: translateY(-3px);
       }
     }
 
     .col h3 {
       font: 500 clamp(1.2rem, 1.35vw, 24px)/1.3 var(--sans);
-      color: var(--ink);
+      color: #0a0a0a;
       margin: 0;
     }
 
     .col .body {
       font: 400 clamp(.92rem, 1vw, 17px)/1.55 var(--inter);
-      color: #595959;
+      color: #383838;
       margin: 0;
       flex: 1;
     }
 
     .col .tags {
-      display: block;
-      line-height: 2.1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       font-family: var(--mono);
       font-size: 13px;
       color: #666;
@@ -578,26 +591,16 @@
     }
 
     .col .chip {
-      display: inline-block;
-      background: #fff;
-      border: 1px solid rgba(0, 0, 0, .1);
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: 100px;
       padding: 4px 12px;
       font-size: 12.5px;
       line-height: 1.35;
       color: #404040;
       white-space: nowrap;
-      vertical-align: middle;
-      margin: 2px 0;
-    }
-
-    .col .dot {
-      display: inline;
-      color: rgba(0, 0, 0, .25);
-      font-size: 13px;
-      user-select: none;
-      margin: 0 3px;
-      vertical-align: middle;
     }
 
     @media (max-width: 1100px) {
@@ -888,7 +891,7 @@
     img, video { max-width: 100% }
     .grid > .card { min-width: 0 }
     #cv { background: #5ca9e4 url("frames-hd/f001.webp") center / cover no-repeat }
-    @media (min-width:1101px) { .cols { grid-template-columns: repeat(3, 1fr); gap: 28px } }
+    @media (min-width:1101px) { .cols { grid-template-columns: repeat(3, 1fr); gap: 24px } }
     .grid .card:not([href]) { cursor: default }
     .works + .works .hd { padding-top: 24px }
 
@@ -1040,43 +1043,42 @@
               <p class="body">I create distinctive visual identities that help brands communicate their personality and
                 stand out. From logo design to typography and color systems, every element works together to build a
                 consistent and recognizable brand.</p>
-              <p class="tags"><span class="chip">Logo Design</span> <span class="dot">·</span> <span class="chip">Visual Identity</span> <span class="dot">·</span> <span class="chip">Typography</span> <span class="dot">·</span> <span class="chip">Color Systems</span> <span class="dot">·</span> <span class="chip">Brand Assets</span></p>
+              <p class="tags"><span class="chip">Logo Design</span> <span class="chip">Visual Identity</span> <span class="chip">Typography</span> <span class="chip">Color Systems</span> <span class="chip">Brand Assets</span></p>
             </article>
             <article class="col">
               <h3>Packaging Design</h3>
               <p class="body">I design packaging that brings products to life through bold visuals, thoughtful layouts,
                 and distinctive graphic elements. From concept development to production-ready artwork, I balance shelf
                 appeal with brand consistency.</p>
-              <p class="tags"><span class="chip">Product Packaging</span> <span class="dot">·</span> <span class="chip">Label Design</span> <span class="dot">·</span> <span class="chip">3D Mockups</span> <span class="dot">·</span> <span class="chip">Print Production</span></p>
+              <p class="tags"><span class="chip">Product Packaging</span> <span class="chip">Label Design</span> <span class="chip">3D Mockups</span> <span class="chip">Print Production</span></p>
             </article>
             <article class="col">
               <h3>Campaigns &amp; Marketing</h3>
               <p class="body">I transform marketing ideas into engaging visual campaigns across digital and print. From
                 attention-grabbing posters to social media creatives and large-format banners, I create designs that
                 communicate clearly and capture attention.</p>
-              <p class="tags"><span class="chip">Poster Design</span> <span class="dot">·</span> <span class="chip">Social Media</span> <span class="dot">·</span> <span class="chip">Digital Ads</span> <span class="dot">·</span> <span class="chip">Banners</span> <span class="dot">·</span> <span class="chip">Campaign Design</span></p>
+              <p class="tags"><span class="chip">Poster Design</span> <span class="chip">Social Media</span> <span class="chip">Digital Ads</span> <span class="chip">Banners</span> <span class="chip">Campaign Design</span></p>
             </article>
             <article class="col">
               <h3>Creative Direction</h3>
               <p class="body">We shape the visual direction beyond a single identity or website. From campaigns and launch
                 assets to content systems and ongoing brand support, we help teams express one central idea with
                 consistency while leaving room for the brand to evolve</p>
-              <p class="tags"><span class="chip">Campaign concepts</span> <span class="dot">·</span> <span class="chip">Launch direction</span> <span class="dot">·</span> <span class="chip">Content systems</span> <span class="dot">·</span> <span class="chip">Motion direction</span> <span class="dot">·</span> <span class="chip">Digital assets</span>
-              </p>
+              <p class="tags"><span class="chip">Campaign concepts</span> <span class="chip">Launch direction</span> <span class="chip">Content systems</span> <span class="chip">Motion direction</span> <span class="chip">Digital assets</span></p>
             </article>
             <article class="col">
               <h3>Product Design</h3>
               <p class="body">I design digital products around real user needs, from early concepts and user flows to clear,
                 scalable interfaces. I focus on solving problems with simple, thoughtful experiences that work as well as
                 they look.</p>
-              <p class="tags"><span class="chip">Product Thinking</span> <span class="dot">·</span> <span class="chip">User Flows</span> <span class="dot">·</span> <span class="chip">Wireframes</span> <span class="dot">·</span> <span class="chip">Prototyping</span> <span class="dot">·</span> <span class="chip">Design Systems</span></p>
+              <p class="tags"><span class="chip">Product Thinking</span> <span class="chip">User Flows</span> <span class="chip">Wireframes</span> <span class="chip">Prototyping</span> <span class="chip">Design Systems</span></p>
             </article>
             <article class="col">
               <h3>UI/UX Design</h3>
               <p class="body">I craft intuitive, visually polished interfaces for websites and apps. From wireframes to
                 high-fidelity screens, I balance usability, accessibility and brand personality so every interaction
                 feels effortless.</p>
-              <p class="tags"><span class="chip">UI Design</span> <span class="dot">·</span> <span class="chip">UX Design</span> <span class="dot">·</span> <span class="chip">Web &amp; App Design</span> <span class="dot">·</span> <span class="chip">Responsive Layouts</span> <span class="dot">·</span> <span class="chip">Figma Prototypes</span></p>
+              <p class="tags"><span class="chip">UI Design</span> <span class="chip">UX Design</span> <span class="chip">Web &amp; App Design</span> <span class="chip">Responsive Layouts</span> <span class="chip">Figma Prototypes</span></p>
             </article>
           </div>
         </div>
