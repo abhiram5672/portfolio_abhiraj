@@ -1,0 +1,2346 @@
+{
+  "testA": {
+    "durationMs": 4067,
+    "lastWheelEventTimeMs": 1051,
+    "requestsCount": 171,
+    "frameNumbers": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      54,
+      55,
+      53,
+      56,
+      52,
+      57,
+      51,
+      58,
+      59,
+      60,
+      61,
+      62,
+      70,
+      71,
+      69,
+      72,
+      68,
+      73,
+      67,
+      74,
+      75,
+      76,
+      77,
+      78,
+      83,
+      84,
+      82,
+      85,
+      81,
+      86,
+      80,
+      87,
+      88,
+      89,
+      90,
+      91,
+      95,
+      96,
+      94,
+      97,
+      93,
+      98,
+      92,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      166,
+      167,
+      165,
+      168,
+      164,
+      169,
+      163,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192
+    ],
+    "timeFromLastWheelToLastFrameMs": 357,
+    "samples": [
+      {
+        "index": 1,
+        "file": "down-01.png",
+        "timeMs": 1,
+        "scrollY": 0,
+        "isBlank": false,
+        "centerHex": "#c93a51",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 201,
+            "g": 58,
+            "b": 81,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 252,
+            "g": 155,
+            "b": 140,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 210,
+            "g": 236,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 158,
+            "g": 214,
+            "b": 250,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 43,
+            "g": 33,
+            "b": 34,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 1,
+          "s2": 0
+        }
+      },
+      {
+        "index": 2,
+        "file": "down-02.png",
+        "timeMs": 1051,
+        "scrollY": 6000,
+        "isBlank": false,
+        "centerHex": "#c63b4e",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 198,
+            "g": 59,
+            "b": 78,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 163,
+            "b": 146,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 209,
+            "g": 235,
+            "b": 254,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 157,
+            "g": 214,
+            "b": 245,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 47,
+            "g": 34,
+            "b": 36,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 3,
+        "file": "down-03.png",
+        "timeMs": 1793,
+        "scrollY": 6000,
+        "isBlank": false,
+        "centerHex": "#c63b4e",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 198,
+            "g": 59,
+            "b": 78,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 163,
+            "b": 146,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 209,
+            "g": 235,
+            "b": 254,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 157,
+            "g": 214,
+            "b": 245,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 47,
+            "g": 34,
+            "b": 36,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 4,
+        "file": "down-04.png",
+        "timeMs": 2176,
+        "scrollY": 6000,
+        "isBlank": false,
+        "centerHex": "#c63b4e",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 198,
+            "g": 59,
+            "b": 78,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 163,
+            "b": 146,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 209,
+            "g": 235,
+            "b": 254,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 157,
+            "g": 214,
+            "b": 245,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 47,
+            "g": 34,
+            "b": 36,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 5,
+        "file": "down-05.png",
+        "timeMs": 2769,
+        "scrollY": 6000,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 6,
+        "file": "down-06.png",
+        "timeMs": 3021,
+        "scrollY": 6000,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 7,
+        "file": "down-07.png",
+        "timeMs": 3272,
+        "scrollY": 6000,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 8,
+        "file": "down-08.png",
+        "timeMs": 3528,
+        "scrollY": 6000,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 9,
+        "file": "down-09.png",
+        "timeMs": 3796,
+        "scrollY": 6000,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      }
+    ],
+    "blankAnalysis": {
+      "blankCount": 5,
+      "longestRunMs": 1620,
+      "samplesCount": 9
+    }
+  },
+  "testB": {
+    "durationMs": 5258,
+    "lastWheelEventTimeMs": 1050,
+    "requestsCount": 178,
+    "frameNumbers": [
+      178,
+      177,
+      176,
+      175,
+      173,
+      174,
+      172,
+      171,
+      170,
+      163,
+      164,
+      162,
+      165,
+      161,
+      166,
+      160,
+      167,
+      168,
+      169,
+      159,
+      158,
+      157,
+      156,
+      155,
+      154,
+      153,
+      152,
+      151,
+      150,
+      149,
+      148,
+      147,
+      146,
+      145,
+      144,
+      143,
+      142,
+      141,
+      140,
+      139,
+      138,
+      137,
+      136,
+      135,
+      134,
+      133,
+      131,
+      132,
+      130,
+      129,
+      128,
+      127,
+      126,
+      125,
+      124,
+      122,
+      123,
+      121,
+      120,
+      119,
+      118,
+      117,
+      116,
+      115,
+      114,
+      113,
+      112,
+      111,
+      110,
+      109,
+      108,
+      107,
+      106,
+      105,
+      104,
+      101,
+      102,
+      100,
+      103,
+      99,
+      98,
+      97,
+      96,
+      95,
+      94,
+      92,
+      93,
+      91,
+      90,
+      89,
+      87,
+      88,
+      86,
+      85,
+      84,
+      83,
+      82,
+      81,
+      80,
+      78,
+      79,
+      77,
+      76,
+      75,
+      74,
+      73,
+      72,
+      71,
+      70,
+      69,
+      68,
+      66,
+      67,
+      65,
+      64,
+      63,
+      62,
+      61,
+      60,
+      59,
+      58,
+      57,
+      56,
+      55,
+      54,
+      53,
+      52,
+      51,
+      50,
+      49,
+      48,
+      47,
+      46,
+      45,
+      44,
+      43,
+      42,
+      40,
+      41,
+      39,
+      38,
+      37,
+      35,
+      36,
+      34,
+      33,
+      32,
+      31,
+      30,
+      29,
+      28,
+      27,
+      26,
+      25,
+      24,
+      23,
+      22,
+      21,
+      20,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3,
+      2,
+      1
+    ],
+    "reRequestedFramesCount": 157,
+    "reRequestedFrames": [
+      178,
+      177,
+      176,
+      175,
+      173,
+      174,
+      172,
+      171,
+      170,
+      163,
+      164,
+      162,
+      165,
+      161,
+      166,
+      160,
+      167,
+      168,
+      169,
+      159,
+      158,
+      157,
+      156,
+      155,
+      154,
+      153,
+      152,
+      151,
+      150,
+      149,
+      148,
+      147,
+      146,
+      145,
+      144,
+      143,
+      142,
+      141,
+      140,
+      139,
+      138,
+      137,
+      136,
+      135,
+      134,
+      133,
+      131,
+      132,
+      130,
+      129,
+      128,
+      127,
+      126,
+      125,
+      124,
+      122,
+      123,
+      121,
+      120,
+      119,
+      118,
+      117,
+      116,
+      115,
+      114,
+      113,
+      112,
+      111,
+      110,
+      109,
+      108,
+      107,
+      106,
+      105,
+      104,
+      101,
+      102,
+      100,
+      103,
+      99,
+      98,
+      97,
+      96,
+      95,
+      94,
+      92,
+      93,
+      91,
+      90,
+      89,
+      87,
+      88,
+      86,
+      85,
+      84,
+      83,
+      82,
+      81,
+      80,
+      78,
+      77,
+      76,
+      75,
+      74,
+      73,
+      72,
+      71,
+      70,
+      69,
+      68,
+      67,
+      62,
+      61,
+      60,
+      59,
+      58,
+      57,
+      56,
+      55,
+      54,
+      53,
+      52,
+      51,
+      43,
+      42,
+      40,
+      41,
+      39,
+      38,
+      37,
+      35,
+      36,
+      34,
+      33,
+      32,
+      31,
+      30,
+      29,
+      28,
+      27,
+      26,
+      25,
+      24,
+      23,
+      22,
+      21,
+      20,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10
+    ],
+    "timeFromLastWheelToLastFrameMs": 352,
+    "samples": [
+      {
+        "index": 1,
+        "file": "up-01.png",
+        "timeMs": 0,
+        "scrollY": 6000,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 1,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 2,
+        "file": "up-02.png",
+        "timeMs": 255,
+        "scrollY": 4500,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 0,
+          "b2": 0,
+          "b3": 0,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 3,
+        "file": "up-03.png",
+        "timeMs": 995,
+        "scrollY": 300,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 0,
+          "s2": 0
+        }
+      },
+      {
+        "index": 4,
+        "file": "up-04.png",
+        "timeMs": 1339,
+        "scrollY": 0,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 1,
+          "s2": 0
+        }
+      },
+      {
+        "index": 5,
+        "file": "up-05.png",
+        "timeMs": 1597,
+        "scrollY": 0,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 1,
+          "s2": 0
+        }
+      },
+      {
+        "index": 6,
+        "file": "up-06.png",
+        "timeMs": 1862,
+        "scrollY": 0,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 1,
+          "s2": 0
+        }
+      },
+      {
+        "index": 7,
+        "file": "up-07.png",
+        "timeMs": 2114,
+        "scrollY": 0,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 1,
+          "s2": 0
+        }
+      },
+      {
+        "index": 8,
+        "file": "up-08.png",
+        "timeMs": 2366,
+        "scrollY": 0,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 1,
+          "s2": 0
+        }
+      },
+      {
+        "index": 9,
+        "file": "up-09.png",
+        "timeMs": 2632,
+        "scrollY": 0,
+        "isBlank": true,
+        "centerHex": "#ffffff",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 1,
+          "s2": 0
+        }
+      },
+      {
+        "index": 10,
+        "file": "up-10.png",
+        "timeMs": 3687,
+        "scrollY": 0,
+        "isBlank": false,
+        "centerHex": "#c93a51",
+        "pixelSamples": [
+          {
+            "x": 713,
+            "y": 450,
+            "r": 201,
+            "g": 58,
+            "b": 81,
+            "a": 255
+          },
+          {
+            "x": 633,
+            "y": 450,
+            "r": 252,
+            "g": 155,
+            "b": 140,
+            "a": 255
+          },
+          {
+            "x": 793,
+            "y": 450,
+            "r": 210,
+            "g": 236,
+            "b": 255,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 370,
+            "r": 158,
+            "g": 214,
+            "b": 250,
+            "a": 255
+          },
+          {
+            "x": 713,
+            "y": 530,
+            "r": 43,
+            "g": 33,
+            "b": 34,
+            "a": 255
+          }
+        ],
+        "overlays": {
+          "b1": 1,
+          "b2": 0,
+          "b3": 0,
+          "hint": 1,
+          "s2": 0
+        }
+      }
+    ],
+    "blankAnalysis": {
+      "blankCount": 9,
+      "longestRunMs": 2882,
+      "samplesCount": 10
+    }
+  },
+  "testD": {
+    "consoleMessages": [],
+    "uncaughtExceptions": [],
+    "networkFailed": [
+      {
+        "requestId": "12116.86",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210801.970798
+      },
+      {
+        "requestId": "12116.119",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.399482
+      },
+      {
+        "requestId": "12116.117",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.399571
+      },
+      {
+        "requestId": "12116.115",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.399666
+      },
+      {
+        "requestId": "12116.113",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.399885
+      },
+      {
+        "requestId": "12116.114",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.40011
+      },
+      {
+        "requestId": "12116.116",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.400162
+      },
+      {
+        "requestId": "12116.118",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.400236
+      },
+      {
+        "requestId": "12116.120",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.41093
+      },
+      {
+        "requestId": "12116.121",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.410977
+      },
+      {
+        "requestId": "12116.122",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.411012
+      },
+      {
+        "requestId": "12116.123",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.411056
+      },
+      {
+        "requestId": "12116.124",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.411089
+      },
+      {
+        "requestId": "12116.131",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.411114
+      },
+      {
+        "requestId": "12116.129",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.411139
+      },
+      {
+        "requestId": "12116.127",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.411165
+      },
+      {
+        "requestId": "12116.125",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.411191
+      },
+      {
+        "requestId": "12116.126",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.427909
+      },
+      {
+        "requestId": "12116.128",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.427956
+      },
+      {
+        "requestId": "12116.130",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.427977
+      },
+      {
+        "requestId": "12116.132",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.428005
+      },
+      {
+        "requestId": "12116.133",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.428045
+      },
+      {
+        "requestId": "12116.134",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.428078
+      },
+      {
+        "requestId": "12116.135",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.428102
+      },
+      {
+        "requestId": "12116.136",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.428119
+      },
+      {
+        "requestId": "12116.143",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.428178
+      },
+      {
+        "requestId": "12116.141",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.428237
+      },
+      {
+        "requestId": "12116.139",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.42831
+      },
+      {
+        "requestId": "12116.137",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.445087
+      },
+      {
+        "requestId": "12116.138",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.445294
+      },
+      {
+        "requestId": "12116.140",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.445353
+      },
+      {
+        "requestId": "12116.142",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.445396
+      },
+      {
+        "requestId": "12116.144",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.447044
+      },
+      {
+        "requestId": "12116.145",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.447496
+      },
+      {
+        "requestId": "12116.146",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.448278
+      },
+      {
+        "requestId": "12116.147",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.448383
+      },
+      {
+        "requestId": "12116.148",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.448415
+      },
+      {
+        "requestId": "12116.155",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.461513
+      },
+      {
+        "requestId": "12116.153",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.461569
+      },
+      {
+        "requestId": "12116.151",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.46159
+      },
+      {
+        "requestId": "12116.149",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.461611
+      },
+      {
+        "requestId": "12116.150",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.461634
+      },
+      {
+        "requestId": "12116.152",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.461659
+      },
+      {
+        "requestId": "12116.154",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.46169
+      },
+      {
+        "requestId": "12116.156",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.476803
+      },
+      {
+        "requestId": "12116.157",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.476874
+      },
+      {
+        "requestId": "12116.158",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.476933
+      },
+      {
+        "requestId": "12116.159",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.476967
+      },
+      {
+        "requestId": "12116.160",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.477023
+      },
+      {
+        "requestId": "12116.161",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.477049
+      },
+      {
+        "requestId": "12116.162",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.477072
+      },
+      {
+        "requestId": "12116.165",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.493798
+      },
+      {
+        "requestId": "12116.166",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.493833
+      },
+      {
+        "requestId": "12116.167",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.493871
+      },
+      {
+        "requestId": "12116.170",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.510717
+      },
+      {
+        "requestId": "12116.171",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.510759
+      },
+      {
+        "requestId": "12116.172",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.510821
+      },
+      {
+        "requestId": "12116.173",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.527619
+      },
+      {
+        "requestId": "12116.174",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.52767
+      },
+      {
+        "requestId": "12116.175",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.527733
+      },
+      {
+        "requestId": "12116.176",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.542352
+      },
+      {
+        "requestId": "12116.177",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.542398
+      },
+      {
+        "requestId": "12116.178",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.542498
+      },
+      {
+        "requestId": "12116.181",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.559423
+      },
+      {
+        "requestId": "12116.213",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.74492
+      },
+      {
+        "requestId": "12116.214",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.744972
+      },
+      {
+        "requestId": "12116.228",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.781179
+      },
+      {
+        "requestId": "12116.226",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210802.781334
+      },
+      {
+        "requestId": "12116.254",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.073788
+      },
+      {
+        "requestId": "12116.253",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.073837
+      },
+      {
+        "requestId": "12116.252",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.073862
+      },
+      {
+        "requestId": "12116.260",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.105993
+      },
+      {
+        "requestId": "12116.259",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.106071
+      },
+      {
+        "requestId": "12116.258",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.106099
+      },
+      {
+        "requestId": "12116.268",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.12222
+      },
+      {
+        "requestId": "12116.269",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.122267
+      },
+      {
+        "requestId": "12116.270",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.122303
+      },
+      {
+        "requestId": "12116.298",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.304801
+      },
+      {
+        "requestId": "12116.299",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.304857
+      },
+      {
+        "requestId": "12116.303",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.322162
+      },
+      {
+        "requestId": "12116.325",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.423005
+      },
+      {
+        "requestId": "12116.324",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.423096
+      },
+      {
+        "requestId": "12116.323",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.423154
+      },
+      {
+        "requestId": "12116.329",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.439046
+      },
+      {
+        "requestId": "12116.327",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.439153
+      },
+      {
+        "requestId": "12116.328",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.439232
+      },
+      {
+        "requestId": "12116.330",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.43929
+      },
+      {
+        "requestId": "12116.326",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.439342
+      },
+      {
+        "requestId": "12116.334",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.453866
+      },
+      {
+        "requestId": "12116.333",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.453914
+      },
+      {
+        "requestId": "12116.332",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.454018
+      },
+      {
+        "requestId": "12116.331",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.454113
+      },
+      {
+        "requestId": "12116.339",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.471727
+      },
+      {
+        "requestId": "12116.337",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.471782
+      },
+      {
+        "requestId": "12116.338",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.471843
+      },
+      {
+        "requestId": "12116.336",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.471953
+      },
+      {
+        "requestId": "12116.335",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.472001
+      },
+      {
+        "requestId": "12116.342",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.488789
+      },
+      {
+        "requestId": "12116.343",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.48885
+      },
+      {
+        "requestId": "12116.341",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.488915
+      },
+      {
+        "requestId": "12116.340",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.48897
+      },
+      {
+        "requestId": "12116.346",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.503664
+      },
+      {
+        "requestId": "12116.345",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.503766
+      },
+      {
+        "requestId": "12116.344",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.503877
+      },
+      {
+        "requestId": "12116.352",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.521467
+      },
+      {
+        "requestId": "12116.350",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.521641
+      },
+      {
+        "requestId": "12116.349",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.521721
+      },
+      {
+        "requestId": "12116.348",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.521758
+      },
+      {
+        "requestId": "12116.347",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.521881
+      },
+      {
+        "requestId": "12116.355",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.537693
+      },
+      {
+        "requestId": "12116.354",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.537743
+      },
+      {
+        "requestId": "12116.353",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.537825
+      },
+      {
+        "requestId": "12116.351",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.537857
+      },
+      {
+        "requestId": "12116.358",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.555938
+      },
+      {
+        "requestId": "12116.357",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.555978
+      },
+      {
+        "requestId": "12116.356",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.55612
+      },
+      {
+        "requestId": "12116.382",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.693727
+      },
+      {
+        "requestId": "12116.381",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.693783
+      },
+      {
+        "requestId": "12116.380",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.693818
+      },
+      {
+        "requestId": "12116.386",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.722205
+      },
+      {
+        "requestId": "12116.385",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.722254
+      },
+      {
+        "requestId": "12116.384",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.722286
+      },
+      {
+        "requestId": "12116.383",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.722307
+      },
+      {
+        "requestId": "12116.390",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.737317
+      },
+      {
+        "requestId": "12116.388",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.737383
+      },
+      {
+        "requestId": "12116.387",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.737418
+      },
+      {
+        "requestId": "12116.392",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.754111
+      },
+      {
+        "requestId": "12116.391",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.754299
+      },
+      {
+        "requestId": "12116.389",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.754368
+      },
+      {
+        "requestId": "12116.396",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.757335
+      },
+      {
+        "requestId": "12116.394",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.757493
+      },
+      {
+        "requestId": "12116.395",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.757517
+      },
+      {
+        "requestId": "12116.393",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.75754
+      },
+      {
+        "requestId": "12116.399",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.772262
+      },
+      {
+        "requestId": "12116.398",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.772389
+      },
+      {
+        "requestId": "12116.397",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.772451
+      },
+      {
+        "requestId": "12116.402",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.78793
+      },
+      {
+        "requestId": "12116.401",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.787979
+      },
+      {
+        "requestId": "12116.400",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.788079
+      },
+      {
+        "requestId": "12116.404",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.804483
+      },
+      {
+        "requestId": "12116.403",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.804577
+      },
+      {
+        "requestId": "12116.406",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.820865
+      },
+      {
+        "requestId": "12116.405",
+        "errorText": "net::ERR_ABORTED",
+        "timestamp": 210806.820912
+      }
+    ],
+    "non200Responses": []
+  }
+}
