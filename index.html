@@ -675,30 +675,61 @@
       color: rgba(0, 0, 0, .7)
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px
+    /* ===== Work Carousels ===== */
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 10px 0 30px;
     }
 
-    @media (max-width:760px) {
-      .grid {
-        grid-template-columns: 1fr
-      }
+    .carousel-track {
+      --card-w: 42vw;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px calc(50% - (var(--card-w) / 2));
+      gap: 24px;
+      align-items: center;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none;
     }
 
     .card {
       position: relative;
+      flex: 0 0 var(--card-w);
+      width: var(--card-w);
+      aspect-ratio: 751/501;
+      min-height: 208px;
+      padding: 20px;
+      border-radius: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      aspect-ratio: 751/501;
-      min-height: 208px;
-      padding: 16px;
-      border-radius: 2.54%/3.8%;
-      overflow: hidden;
-      text-decoration: none;
-      color: #fff
+      scroll-snap-align: center;
+      scroll-snap-stop: normal;
+      cursor: pointer;
+      transform: scale(0.85);
+      opacity: 0.6;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      will-change: transform, opacity;
+    }
+
+    .card.is-active {
+      transform: scale(1);
+      opacity: 1;
+      z-index: 2;
     }
 
     .card img {
@@ -708,11 +739,8 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform .5s
-    }
-
-    .card:hover img {
-      transform: scale(1.03)
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
     }
 
     .card::after {
@@ -720,7 +748,7 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to bottom, rgba(0, 0, 0, .06), rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, .42));
-      pointer-events: none
+      pointer-events: none;
     }
 
     .sum {
@@ -729,7 +757,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 12px
+      gap: 12px;
     }
 
     .cap {
@@ -739,24 +767,13 @@
       font: 400 clamp(.9rem, .9vw, 17px)/1.35 var(--inter);
       letter-spacing: -.01em;
       max-width: 34ch;
-      text-shadow: 0 1px 14px rgba(0, 0, 0, .35)
+      text-shadow: 0 1px 14px rgba(0, 0, 0, .35);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .cap b {
       font: 500 clamp(1.15rem, 1.25vw, 24px)/1.3 var(--inter);
-      letter-spacing: -.02em
-    }
-
-    .grid .card:last-child:nth-child(odd) {
-      grid-column: 1/-1;
-      justify-self: center;
-      width: calc(50% - 10px)
-    }
-
-    @media (max-width:760px) {
-      .grid .card:last-child:nth-child(odd) {
-        width: 100%
-      }
+      letter-spacing: -.02em;
     }
 
     .ar {
@@ -767,11 +784,92 @@
       background: #fff;
       display: grid;
       place-items: center;
-      transition: transform .25s
+      transition: transform .25s;
     }
 
-    .card:hover .ar {
-      transform: rotate(45deg)
+    /* Desktop hover on active card only */
+    @media (hover: hover) and (pointer: fine) {
+      .card.is-active:hover img {
+        transform: scale(1.04);
+      }
+      .card.is-active:hover .cap {
+        transform: translateY(-6px);
+      }
+      .card.is-active:hover .ar {
+        transform: rotate(45deg);
+      }
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      color: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      padding: 0;
+      transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+    }
+
+    .carousel-btn:hover {
+      background: #ffffff;
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .carousel-btn.prev {
+      left: 24px;
+    }
+
+    .carousel-btn.next {
+      right: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .carousel {
+        padding: 6px 0 20px;
+      }
+
+      .carousel-track {
+        --card-w: 78vw;
+        gap: 16px;
+        padding: 16px calc(50% - (var(--card-w) / 2));
+      }
+
+      .card {
+        padding: 14px;
+        border-radius: 16px;
+      }
+
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+      }
+
+      .carousel-btn.prev {
+        left: 8px;
+      }
+
+      .carousel-btn.next {
+        right: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card, .card img, .cap, .ar, .carousel-track {
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
     }
 
     .all {
@@ -936,7 +1034,6 @@
 
     /* very small phones (320–380px) */
     @media (max-width:380px) {
-      .grid { grid-template-columns: minmax(0, 1fr) }
       .card { min-height: 0; aspect-ratio: 4/3; padding: 14px }
       .cap { font-size: .85rem }
       .cap b { font-size: 1.05rem }
@@ -1100,7 +1197,14 @@
             <p>A curated collection of identities and digital experiences created for ambitious teams</p>
           </div>
         </div>
-        <div class="grid"><a class="card"
+      </div>
+      <div class="carousel" data-carousel>
+        <button type="button" class="carousel-btn prev" aria-label="Previous project">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div class="carousel-track grid"><a class="card is-active"
             href="case-study.html?p=malavo"
             target="_blank" rel="noopener" aria-label="Malavo – Packaging (opens case study)"><img src="assets/work-1.webp"
               alt="Two women in festive Indian attire opening a box of Malavo sweets" loading="lazy"><span
@@ -1168,6 +1272,11 @@
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M7 17 17 7M8 7h9v9" />
                 </svg></i></span></a></div>
+        <button type="button" class="carousel-btn next" aria-label="Next project">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </section>
 
@@ -1181,7 +1290,14 @@
             <p>Digital products and interfaces designed around real users, clear flows and intuitive experiences</p>
           </div>
         </div>
-        <div class="grid"><a class="card" href="case-study.html?p=morpho" target="_blank" rel="noopener"
+      </div>
+      <div class="carousel" data-carousel>
+        <button type="button" class="carousel-btn prev" aria-label="Previous project">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div class="carousel-track grid"><a class="card is-active" href="case-study.html?p=morpho" target="_blank" rel="noopener"
             aria-label="Morpho.ai – A UX Design AI Copilot (opens case study)"><img src="assets/work-11.webp"
               alt="Morpho.ai billboard mockup showing the UX design AI copilot interface" loading="lazy"><span
               class="sum"><span class="cap"><b>Morpho.ai</b>A UX Design AI Copilot.</span><i class="ar"><svg
@@ -1210,6 +1326,11 @@
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M7 17 17 7M8 7h9v9" />
                 </svg></i></span></a></div>
+        <button type="button" class="carousel-btn next" aria-label="Next project">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </section>
 
@@ -1234,6 +1355,106 @@
         links.forEach(function (a) { a.classList.toggle('on', a.dataset.s === cur); });
       }
       addEventListener('scroll', set, { passive: true }); set();
+    })();
+  </script>
+  <script>
+    // Work carousels with centre focus
+    (function () {
+      var carousels = document.querySelectorAll('[data-carousel]');
+      carousels.forEach(function (carousel) {
+        var track = carousel.querySelector('.carousel-track');
+        var prevBtn = carousel.querySelector('.carousel-btn.prev');
+        var nextBtn = carousel.querySelector('.carousel-btn.next');
+        if (!track) return;
+
+        var cards = [].slice.call(track.querySelectorAll('.card'));
+        if (!cards.length) return;
+
+        function getActiveIndex() {
+          var trackCenter = track.scrollLeft + track.clientWidth / 2;
+          var closestIdx = 0;
+          var minDiff = Infinity;
+          for (var i = 0; i < cards.length; i++) {
+            var cardCenter = cards[i].offsetLeft + cards[i].offsetWidth / 2;
+            var diff = Math.abs(trackCenter - cardCenter);
+            if (diff < minDiff) {
+              minDiff = diff;
+              closestIdx = i;
+            }
+          }
+          return closestIdx;
+        }
+
+        function updateFocus() {
+          var activeIdx = getActiveIndex();
+          for (var i = 0; i < cards.length; i++) {
+            if (i === activeIdx) {
+              cards[i].classList.add('is-active');
+            } else {
+              cards[i].classList.remove('is-active');
+            }
+          }
+          if (prevBtn && nextBtn) {
+            prevBtn.style.opacity = activeIdx <= 0 ? '0.35' : '1';
+            prevBtn.style.cursor = activeIdx <= 0 ? 'default' : 'pointer';
+            nextBtn.style.opacity = activeIdx >= cards.length - 1 ? '0.35' : '1';
+            nextBtn.style.cursor = activeIdx >= cards.length - 1 ? 'default' : 'pointer';
+          }
+        }
+
+        function scrollToCard(card) {
+          if (!card) return;
+          var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var trackCenter = track.clientWidth / 2;
+          var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          track.scrollTo({
+            left: cardCenter - trackCenter,
+            behavior: prefersReduced ? 'auto' : 'smooth'
+          });
+        }
+
+        var ticking = false;
+        track.addEventListener('scroll', function () {
+          if (!ticking) {
+            window.requestAnimationFrame(function () {
+              updateFocus();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+
+        track.addEventListener('click', function (e) {
+          var card = e.target.closest('.card');
+          if (!card || !track.contains(card)) return;
+
+          if (!card.classList.contains('is-active')) {
+            e.preventDefault();
+            scrollToCard(card);
+          }
+        });
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function () {
+            var activeIdx = getActiveIndex();
+            if (activeIdx > 0) {
+              scrollToCard(cards[activeIdx - 1]);
+            }
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function () {
+            var activeIdx = getActiveIndex();
+            if (activeIdx < cards.length - 1) {
+              scrollToCard(cards[activeIdx + 1]);
+            }
+          });
+        }
+
+        window.addEventListener('resize', updateFocus);
+        updateFocus();
+      });
     })();
   </script>
   <script>
