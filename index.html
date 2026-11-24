@@ -698,6 +698,13 @@
       color: rgba(0, 0, 0, .7)
     }
 
+    .work-sub {
+      font: 400 clamp(1.5rem, 2.4vw, 36px)/1.15 var(--serif);
+      letter-spacing: -.02em;
+      color: #0a0a0a;
+      margin: 0 0 8px;
+    }
+
     /* ===== Work Carousels ===== */
     .carousel {
       position: relative;
@@ -1384,11 +1391,12 @@
 <section class="works" id="work">
       <div class="wrap">
         <div class="hd">
-          <h2 class="serif92">Selected Works</h2>
+          <h2 class="serif92">Work That Speaks</h2>
           <div class="hl2">
             <p class="lab"><span class="lt">Project highlights</span></p>
           </div>
         </div>
+        <h3 class="work-sub">Visual Graphics Works</h3>
       </div>
       <div class="carousel" data-carousel>
         <button type="button" class="carousel-btn prev" aria-label="Previous project">
@@ -1737,6 +1745,10 @@
         }
 
         window.addEventListener('resize', updateFocus);
+        if (cards.length > 2) {
+          var second = cards[1];
+          track.scrollLeft = (second.offsetLeft + second.offsetWidth / 2) - (track.clientWidth / 2);
+        }
         updateFocus();
       });
     })();
