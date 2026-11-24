@@ -940,48 +940,95 @@
     /* ===== Stats ===== */
     .stats {
       border-top: 1px solid rgba(0, 0, 0, 0.08);
-      padding: 80px 0;
+      padding: 96px 0;
     }
 
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 32px 24px;
     }
 
     .stat-item {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
+      padding: 16px 32px;
+    }
+
+    .stat-item:first-child {
+      padding-left: 0;
+    }
+
+    .stat-item:not(:first-child) {
+      border-left: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .stat-num {
-      font: 400 clamp(2.75rem, 4.5vw, 72px)/1 var(--serif);
+      font: 400 clamp(3.5rem, 6vw, 6rem)/1 var(--serif);
       color: #0a0a0a;
       letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+      display: inline-flex;
+      align-items: baseline;
+    }
+
+    .stat-suffix {
+      color: #b24a0a;
+      font-size: 0.68em;
+      margin-left: 2px;
     }
 
     .stat-label {
-      font: 400 13.5px/1.4 var(--mono);
+      font: 400 13px/1.4 var(--mono);
       color: #4a4a4a;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
     }
 
     @media (max-width: 900px) {
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .stat-item {
+        padding: 24px;
+      }
+
+      .stat-item:nth-child(odd) {
+        padding-left: 0;
+        border-left: none;
+      }
+
+      .stat-item:nth-child(n+3) {
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
     }
 
     @media (max-width: 640px) {
       .stats {
-        padding: 64px 0;
+        padding: 72px 0;
       }
 
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 28px 20px;
+      }
+
+      .stat-item {
+        padding: 24px 12px 24px 0;
+        border-left: none;
+      }
+
+      .stat-item:not(:first-child) {
+        border-left: none;
+      }
+
+      .stat-item:nth-child(even) {
+        padding-left: 16px;
+        padding-right: 0;
+      }
+
+      .stat-item:nth-child(n+3) {
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
       }
     }
 
@@ -1534,7 +1581,24 @@
 
     <section class="stats" id="stats">
       <div class="wrap">
-        <div class="stats-grid" id="stats-grid"></div>
+        <div class="stats-grid" id="stats-grid">
+          <div class="stat-item">
+            <span class="stat-num"><span class="stat-val" data-target="5">0</span><span class="stat-suffix">+</span></span>
+            <span class="stat-label">Years of experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num"><span class="stat-val" data-target="100">0</span><span class="stat-suffix">+</span></span>
+            <span class="stat-label">Projects delivered</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num"><span class="stat-val" data-target="50">0</span><span class="stat-suffix">+</span></span>
+            <span class="stat-label">Clients served</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num"><span class="stat-val" data-target="10">0</span><span class="stat-suffix">+</span></span>
+            <span class="stat-label">Brands launched</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1566,29 +1630,27 @@
     ];
 
     (function () {
-      var grid = document.getElementById('stats-grid');
       var section = document.getElementById('stats');
-      if (!grid || !section) return;
+      var items = [].slice.call(document.querySelectorAll('#stats .stat-item'));
+      if (!section || !items.length) return;
 
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var numEls = [];
 
-      statsData.forEach(function (item) {
-        var card = document.createElement('div');
-        card.className = 'stat-item';
-
-        var num = document.createElement('span');
-        num.className = 'stat-num';
-        num.textContent = reduce ? (item.value + item.suffix) : ('0' + item.suffix);
-
-        var label = document.createElement('span');
-        label.className = 'stat-label';
-        label.textContent = item.label;
-
-        card.appendChild(num);
-        card.appendChild(label);
-        grid.appendChild(card);
-        numEls.push({ el: num, value: item.value, suffix: item.suffix });
+      items.forEach(function (card, idx) {
+        var valEl = card.querySelector('.stat-val');
+        var suffixEl = card.querySelector('.stat-suffix');
+        var labelEl = card.querySelector('.stat-label');
+        var data = statsData[idx];
+        if (data) {
+          if (valEl) valEl.setAttribute('data-target', String(data.value));
+          if (suffixEl) suffixEl.textContent = data.suffix;
+          if (labelEl) labelEl.textContent = data.label;
+        }
+        if (!valEl) return;
+        var target = parseInt(valEl.getAttribute('data-target'), 10) || 0;
+        valEl.textContent = reduce ? String(target) : '0';
+        numEls.push({ el: valEl, target: target });
       });
 
       if (reduce) return;
@@ -1597,7 +1659,7 @@
       function animateStats() {
         if (started) return;
         started = true;
-        var duration = 1500;
+        var duration = 1800;
         var startTime = null;
 
         function step(now) {
@@ -1606,15 +1668,14 @@
           var eased = 1 - Math.pow(1 - progress, 3);
 
           for (var i = 0; i < numEls.length; i++) {
-            var current = Math.round(numEls[i].value * eased);
-            numEls[i].el.textContent = current + numEls[i].suffix;
+            numEls[i].el.textContent = String(Math.round(numEls[i].target * eased));
           }
 
           if (progress < 1) {
             requestAnimationFrame(step);
           } else {
             for (var j = 0; j < numEls.length; j++) {
-              numEls[j].el.textContent = numEls[j].value + numEls[j].suffix;
+              numEls[j].el.textContent = String(numEls[j].target);
             }
           }
         }
@@ -1625,16 +1686,16 @@
       if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
               animateStats();
               observer.unobserve(section);
             }
           });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.4 });
         observer.observe(section);
       } else {
         for (var k = 0; k < numEls.length; k++) {
-          numEls[k].el.textContent = numEls[k].value + numEls[k].suffix;
+          numEls[k].el.textContent = String(numEls[k].target);
         }
       }
     })();
