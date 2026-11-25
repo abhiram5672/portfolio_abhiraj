@@ -534,14 +534,21 @@
     .col {
       position: relative;
       z-index: 0;
+      background: #ffffff;
       border-radius: 20px;
       padding: 32px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: none;
       display: flex;
       flex-direction: column;
       gap: 18px;
       line-height: 1.5;
+    }
+
+    .col-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .col::before {
@@ -572,22 +579,11 @@
       flex-shrink: 0;
     }
 
-    .col:nth-child(1) { background: #eef3f9; }
     .col:nth-child(1)::before { background: #2770c4; }
-
-    .col:nth-child(2) { background: #f4f1ec; }
     .col:nth-child(2)::before { background: #a05a2c; }
-
-    .col:nth-child(3) { background: #f1f5f0; }
     .col:nth-child(3)::before { background: #2e7d5a; }
-
-    .col:nth-child(4) { background: #f5f0f4; }
     .col:nth-child(4)::before { background: #8a4f7d; }
-
-    .col:nth-child(5) { background: #eef4f5; }
     .col:nth-child(5)::before { background: #2b7a84; }
-
-    .col:nth-child(6) { background: #f3f2f8; }
     .col:nth-child(6)::before { background: #5e548e; }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -605,15 +601,15 @@
       }
 
       .col {
-        transition: opacity 0.55s cubic-bezier(.16, 1, .3, 1), transform 0.35s ease, background-color 0.35s ease;
+        transition: opacity 0.55s cubic-bezier(.16, 1, .3, 1), transform 0.3s ease;
       }
 
       .col::after {
-        transition: opacity 0.35s ease;
+        transition: opacity 0.3s ease;
       }
 
       .col-icon {
-        transition: transform 0.35s ease;
+        transition: transform 0.3s ease;
       }
 
       .col.reveal-init {
@@ -645,8 +641,13 @@
       }
 
       @media (hover: hover) and (pointer: fine) {
+        .col {
+          transition: opacity 0.55s cubic-bezier(.16, 1, .3, 1), transform 0.3s ease, border-color 0.3s ease;
+        }
+
         .col:hover {
-          transform: translateY(-6px);
+          transform: translateY(-4px);
+          border-color: rgba(0, 0, 0, 0.2);
         }
 
         .col:hover::after {
@@ -656,13 +657,6 @@
         .col:hover .col-icon {
           transform: rotate(8deg);
         }
-
-        .col:nth-child(1):hover { background-color: #e3ebf5; }
-        .col:nth-child(2):hover { background-color: #ebe6de; }
-        .col:nth-child(3):hover { background-color: #e5ede4; }
-        .col:nth-child(4):hover { background-color: #ece4ea; }
-        .col:nth-child(5):hover { background-color: #e2ecee; }
-        .col:nth-child(6):hover { background-color: #e8e6f3; }
       }
     }
 
@@ -1492,7 +1486,7 @@
           <section class="stats" id="stats">
             <div class="stats-grid" id="stats-grid">
               <div class="stat-item">
-                <span class="stat-num"><span class="stat-val" data-target="5">0</span><span class="stat-suffix">+</span></span>
+                <span class="stat-num"><span class="stat-val" data-target="4">0</span><span class="stat-suffix">+</span></span>
                 <span class="stat-label">Years of experience</span>
               </div>
               <div class="stat-item">
@@ -1514,48 +1508,60 @@
           </div>
           <div class="about-cols-slot cols">
             <article class="col">
-              <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <h3>Brand Identity</h3>
+              <div class="col-head">
+                <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <h3>Brand Identity</h3>
+              </div>
               <p class="body">I create distinctive visual identities that help brands communicate their personality and
                 stand out. From logo design to typography and color systems, every element works together to build a
                 consistent and recognizable brand.</p>
               <p class="tags"><span class="chip">Logo Design</span> <span class="chip">Visual Identity</span> <span class="chip">Typography</span> <span class="chip">Color Systems</span> <span class="chip">Brand Assets</span></p>
             </article>
             <article class="col">
-              <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-              <h3>Packaging Design</h3>
+              <div class="col-head">
+                <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                <h3>Packaging Design</h3>
+              </div>
               <p class="body">I design packaging that brings products to life through bold visuals, thoughtful layouts,
                 and distinctive graphic elements. From concept development to production-ready artwork, I balance shelf
                 appeal with brand consistency.</p>
               <p class="tags"><span class="chip">Product Packaging</span> <span class="chip">Label Design</span> <span class="chip">3D Mockups</span> <span class="chip">Print Production</span></p>
             </article>
             <article class="col">
-              <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-              <h3>Campaigns &amp; Marketing</h3>
+              <div class="col-head">
+                <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                <h3>Campaigns &amp; Marketing</h3>
+              </div>
               <p class="body">I transform marketing ideas into engaging visual campaigns across digital and print. From
                 attention-grabbing posters to social media creatives and large-format banners, I create designs that
                 communicate clearly and capture attention.</p>
               <p class="tags"><span class="chip">Poster Design</span> <span class="chip">Social Media</span> <span class="chip">Digital Ads</span> <span class="chip">Banners</span> <span class="chip">Campaign Design</span></p>
             </article>
             <article class="col">
-              <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-              <h3>Creative Direction</h3>
+              <div class="col-head">
+                <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                <h3>Creative Direction</h3>
+              </div>
               <p class="body">We shape the visual direction beyond a single identity or website. From campaigns and launch
                 assets to content systems and ongoing brand support, we help teams express one central idea with
                 consistency while leaving room for the brand to evolve</p>
               <p class="tags"><span class="chip">Campaign concepts</span> <span class="chip">Launch direction</span> <span class="chip">Content systems</span> <span class="chip">Motion direction</span> <span class="chip">Digital assets</span></p>
             </article>
             <article class="col">
-              <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-              <h3>Product Design</h3>
+              <div class="col-head">
+                <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                <h3>Product Design</h3>
+              </div>
               <p class="body">I design digital products around real user needs, from early concepts and user flows to clear,
                 scalable interfaces. I focus on solving problems with simple, thoughtful experiences that work as well as
                 they look.</p>
               <p class="tags"><span class="chip">Product Thinking</span> <span class="chip">User Flows</span> <span class="chip">Wireframes</span> <span class="chip">Prototyping</span> <span class="chip">Design Systems</span></p>
             </article>
             <article class="col">
-              <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 4 7.07 17 2.51-7.39L21 11.07z"/></svg>
-              <h3>UI/UX Design</h3>
+              <div class="col-head">
+                <svg class="col-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0a0a0a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 4 7.07 17 2.51-7.39L21 11.07z"/></svg>
+                <h3>UI/UX Design</h3>
+              </div>
               <p class="body">I craft intuitive, visually polished interfaces for websites and apps. From wireframes to
                 high-fidelity screens, I balance usability, accessibility and brand personality so every interaction
                 feels effortless.</p>
@@ -1723,7 +1729,7 @@
 
   <script>
     var statsData = [
-      { value: 5, suffix: "+", label: "Years of experience" },  // PLACEHOLDER: confirm
+      { value: 4, suffix: "+", label: "Years of experience" },  // PLACEHOLDER: confirm
       { value: 100, suffix: "+", label: "Projects delivered" },  // PLACEHOLDER: confirm
       { value: 50, suffix: "+", label: "Clients served" },  // PLACEHOLDER: confirm
       { value: 10, suffix: "+", label: "Brands launched" }  // PLACEHOLDER: confirm
