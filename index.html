@@ -340,6 +340,27 @@
       font-style: italic
     }
 
+    #b2 .type-ch {
+      visibility: hidden;
+      position: relative
+    }
+
+    #b2 .type-ch.is-shown {
+      visibility: visible
+    }
+
+    #b2 .type-ch.is-cur::after {
+      content: "";
+      visibility: visible;
+      position: absolute;
+      right: -.08em;
+      top: .12em;
+      width: 2px;
+      height: .85em;
+      background: currentColor;
+      animation: type-blink .8s steps(1) infinite
+    }
+
     .b3 {
       inset: 0;
       display: grid;
@@ -2106,6 +2127,108 @@
       function clamp(x) { return Math.max(0, Math.min(1, x)); }
       function win(p, a, b, c, d) { return clamp((p - a) / (b - a)) * (1 - clamp((p - c) / (d - c))); }
 
+      var b2H2 = b2 ? b2.querySelector('h2') : null;
+      var b2Spans = [];
+      var b2Timer = 0;
+      var b2Idx = 0;
+      var b2Visible = false;
+
+      if (b2H2 && !reduce) {
+        var b2Frag = document.createDocumentFragment();
+        var b2Nodes = [].slice.call(b2H2.childNodes);
+        for (var ni = 0; ni < b2Nodes.length; ni++) {
+          var bn = b2Nodes[ni];
+          if (bn.nodeType === 1 && bn.tagName === 'EM') {
+            var emEl = document.createElement('em');
+            var emTxt = bn.textContent;
+            for (var ei = 0; ei < emTxt.length; ei++) {
+              var es = document.createElement('span');
+              es.className = 'type-ch';
+              es.textContent = emTxt.charAt(ei);
+              emEl.appendChild(es);
+              b2Spans.push(es);
+            }
+            b2Frag.appendChild(emEl);
+          } else if (bn.nodeType === 3) {
+            var bt = bn.nodeValue;
+            for (var ti = 0; ti < bt.length; ti++) {
+              var ch = bt.charAt(ti);
+              if (ch === '\n' || ch === '\r') continue;
+              var ts = document.createElement('span');
+              ts.className = 'type-ch';
+              ts.textContent = ch;
+              b2Frag.appendChild(ts);
+              b2Spans.push(ts);
+            }
+          }
+        }
+        if (b2Spans.length) {
+          b2H2.setAttribute('aria-label', b2H2.textContent.replace(/\s+/g, ' ').trim());
+          b2H2.textContent = '';
+          b2H2.appendChild(b2Frag);
+        }
+      }
+
+      function b2ClearTimer() {
+        if (b2Timer) {
+          clearTimeout(b2Timer);
+          b2Timer = 0;
+        }
+      }
+
+      function b2ShowAll() {
+        b2ClearTimer();
+        for (var i = 0; i < b2Spans.length; i++) {
+          b2Spans[i].classList.add('is-shown');
+          b2Spans[i].classList.remove('is-cur');
+        }
+        b2Idx = b2Spans.length;
+      }
+
+      function b2Reset() {
+        b2ClearTimer();
+        for (var i = 0; i < b2Spans.length; i++) {
+          b2Spans[i].classList.remove('is-shown', 'is-cur');
+        }
+        b2Idx = 0;
+      }
+
+      function b2Step() {
+        b2Timer = 0;
+        if (!b2Visible || reduce || b2Idx >= b2Spans.length) return;
+        if (b2Idx > 0) b2Spans[b2Idx - 1].classList.remove('is-cur');
+        while (b2Idx < b2Spans.length && b2Spans[b2Idx].textContent === ' ') {
+          b2Spans[b2Idx].classList.add('is-shown');
+          b2Idx++;
+        }
+        if (b2Idx < b2Spans.length) {
+          b2Spans[b2Idx].classList.add('is-shown', 'is-cur');
+          b2Idx++;
+        }
+        if (b2Idx < b2Spans.length) {
+          b2Timer = setTimeout(b2Step, 40);
+        } else if (b2Spans.length) {
+          b2Spans[b2Spans.length - 1].classList.remove('is-cur');
+        }
+      }
+
+      function setB2Typing(visible) {
+        if (!b2Spans.length) return;
+        if (reduce) {
+          b2Visible = visible;
+          b2ShowAll();
+          return;
+        }
+        if (visible === b2Visible) return;
+        b2Visible = visible;
+        if (visible) {
+          b2Reset();
+          b2Timer = setTimeout(b2Step, 40);
+        } else {
+          b2Reset();
+        }
+      }
+
       function measureStage() {
         var r = stage.getBoundingClientRect();
         var sy = window.scrollY || window.pageYOffset || 0;
@@ -2265,6 +2388,7 @@
           b2.style.opacity = o2;
           b2.style.transform = 'translateY(' + ((1 - o2) * 14) + 'px)';
           s2.style.opacity = o2;
+          setB2Typing(o2 > 0);
         }
         if (o3 !== prevO3) {
           prevO3 = o3;
@@ -2369,6 +2493,7 @@
         mql.addEventListener('change', function (ev) {
           reduce = ev.matches;
           if (reduce) {
+            b2ShowAll();
             stopLoop();
             var p = progress();
             target = p * (N - 1);
