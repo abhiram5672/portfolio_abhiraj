@@ -239,6 +239,30 @@
       font-style: italic
     }
 
+    .type-cursor {
+      display: inline-block;
+      position: relative;
+      width: 0;
+      height: .85em;
+      vertical-align: -.05em
+    }
+
+    .type-cursor::after {
+      content: "";
+      position: absolute;
+      left: .08em;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: currentColor;
+      animation: type-blink .8s steps(1) infinite
+    }
+
+    @keyframes type-blink {
+      0%, 49% { opacity: 1 }
+      50%, 100% { opacity: 0 }
+    }
+
     .hr p.big {
       color: var(--blue)
     }
@@ -1457,46 +1481,98 @@
                 var steps = [];
                 var nodes = [].slice.call(h1.childNodes);
                 var pendingBr = false;
+                var pendingSpace = false;
                 for (var i = 0; i < nodes.length; i++) {
                   var n = nodes[i];
                   if (n.nodeType === 1 && n.tagName === 'BR') {
                     pendingBr = true;
+                    pendingSpace = false;
                   } else if (n.nodeType === 1 && n.tagName === 'EM') {
-                    var emWords = n.textContent.trim().split(/\s+/);
-                    for (var j = 0; j < emWords.length; j++) {
-                      if (!emWords[j]) continue;
-                      steps.push({ text: emWords[j], em: true, br: pendingBr && j === 0, space: !pendingBr && steps.length > 0 });
+                    var emChars = n.textContent.trim().split('');
+                    for (var j = 0; j < emChars.length; j++) {
+                      steps.push({
+                        ch: emChars[j],
+                        em: true,
+                        emStart: j === 0,
+                        br: pendingBr && j === 0,
+                        space: !pendingBr && pendingSpace && j === 0
+                      });
                     }
                     pendingBr = false;
+                    pendingSpace = false;
                   } else if (n.nodeType === 3) {
                     var raw = n.nodeValue;
-                    var hasLeadSpace = /^\s/.test(raw);
-                    var words = raw.trim().split(/\s+/);
-                    for (var k = 0; k < words.length; k++) {
-                      if (!words[k]) continue;
-                      steps.push({ text: words[k], em: false, br: pendingBr && k === 0, space: (k > 0) || (!pendingBr && hasLeadSpace && steps.length > 0) });
+                    for (var k = 0; k < raw.length; k++) {
+                      var ch = raw.charAt(k);
+                      if (ch === '\n' || ch === '\r') continue;
+                      if (ch === ' ') {
+                        if (steps.length > 0 && !pendingBr) pendingSpace = true;
+                        continue;
+                      }
+                      steps.push({
+                        ch: ch,
+                        em: false,
+                        emStart: false,
+                        br: pendingBr,
+                        space: !pendingBr && pendingSpace
+                      });
+                      pendingBr = false;
+                      pendingSpace = false;
                     }
-                    if (words.length && words[0]) pendingBr = false;
                   }
                 }
                 if (!steps.length) return;
-                h1.setAttribute('aria-label', steps.map(function (s) { return s.text; }).join(' '));
+                h1.style.minHeight = '3em';
+                h1.setAttribute('aria-label', h1.textContent.replace(/\s+/g, ' ').trim());
                 h1.textContent = '';
+
+                var cursor = document.createElement('span');
+                cursor.className = 'type-cursor';
+                cursor.setAttribute('aria-hidden', 'true');
+                h1.appendChild(cursor);
+
                 var idx = 0;
+                var activeText = null;
+                var activeEm = null;
+
                 function typeNext() {
                   var s = steps[idx++];
-                  if (s.br) h1.appendChild(document.createElement('br'));
-                  else if (s.space) h1.appendChild(document.createTextNode(' '));
-                  if (s.em) {
-                    var em = document.createElement('em');
-                    em.textContent = s.text;
-                    h1.appendChild(em);
-                  } else {
-                    h1.appendChild(document.createTextNode(s.text));
+                  if (s.br) {
+                    h1.insertBefore(document.createElement('br'), cursor);
+                    activeText = null;
+                    activeEm = null;
+                  } else if (s.space) {
+                    if (activeText && !s.em) {
+                      activeText.nodeValue += ' ';
+                    } else {
+                      h1.insertBefore(document.createTextNode(' '), cursor);
+                      activeText = null;
+                    }
                   }
-                  if (idx < steps.length) setTimeout(typeNext, 120);
+                  if (s.em) {
+                    if (s.emStart || !activeEm) {
+                      activeEm = document.createElement('em');
+                      h1.insertBefore(activeEm, cursor);
+                    }
+                    activeEm.textContent += s.ch;
+                    activeText = null;
+                  } else {
+                    if (!activeText) {
+                      activeText = document.createTextNode(s.ch);
+                      h1.insertBefore(activeText, cursor);
+                    } else {
+                      activeText.nodeValue += s.ch;
+                    }
+                    activeEm = null;
+                  }
+                  if (idx < steps.length) {
+                    setTimeout(typeNext, 40);
+                  } else {
+                    cursor.remove();
+                    h1.style.minHeight = '';
+                  }
                 }
-                setTimeout(typeNext, 120);
+                setTimeout(typeNext, 40);
               })();
             </script>
           </div>
