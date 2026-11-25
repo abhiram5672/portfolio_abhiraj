@@ -170,7 +170,8 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      display: block
+      display: block;
+      will-change: transform
     }
 
     .scrim-bottom {
@@ -178,7 +179,8 @@
       left: 0;
       right: 0;
       pointer-events: none;
-      opacity: 0
+      opacity: 0;
+      will-change: opacity
     }
 
     .scrim-bottom {
@@ -345,7 +347,8 @@
       flex-direction: column;
       align-items: center;
       gap: .5rem;
-      text-shadow: 0 1px 12px rgba(8, 24, 48, .5)
+      text-shadow: 0 1px 12px rgba(8, 24, 48, .5);
+      will-change: opacity
     }
 
     .hint i {
@@ -361,16 +364,24 @@
       content: "";
       position: absolute;
       left: 0;
-      top: -40%;
+      top: 0;
       width: 100%;
       height: 40%;
       background: #fff;
+      transform: translateY(-100%);
+      will-change: transform;
       animation: drip 1.6s ease-in-out infinite
     }
 
     @keyframes drip {
       to {
-        top: 110%
+        transform: translateY(275%)
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hint i::after {
+        animation: none
       }
     }
 
@@ -1911,119 +1922,322 @@
       // and phones, without improving the displayed result on this page.
       var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       var DIR = 'frames-hd/';
-      // Keep a small working set around the current scroll position.
-      var AHEAD = 8, BEHIND = 3, KEEP = 12;
+      var AHEAD = 8, BEHIND = 3, MAX_BG = 2;
       function url(i) { return DIR + 'f' + String(i + 1).padStart(3, '0') + '.webp'; }
 
       var cv = document.getElementById('cv');
       var ctx = cv.getContext('2d', { alpha: false, desynchronized: true });
       var stage = document.getElementById('stage');
-      var cache = Object.create(null), cur = 0, target = 0, shown = -1, mgrAt = -99;
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var cache = Object.create(null);
+      var cur = 0, target = 0, shown = -1, mgrAt = -99;
+      var lastImg = null, needsRedraw = false, bgFilled = false;
+      var stageTop = 0, stageHeight = 0, winH = 0, stageTotal = 0, stageBottom = 0;
+      var rafId = 0, scrollRaf = 0, last = 0;
+      var firstFrameReady = false, bgStarted = false, bgIndex = 0, bgActive = 0, urgentPending = 0;
+      var prevO1 = null, prevO2 = null, prevO3 = null, prevOh = null;
+
+      var mql = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+      var reduce = mql ? mql.matches : false;
       var el = function (id) { return document.getElementById(id); };
       var b1 = el('b1'), b2 = el('b2'), b3 = el('b3'), s2 = el('s2'), hint = el('hint');
       function clamp(x) { return Math.max(0, Math.min(1, x)); }
       function win(p, a, b, c, d) { return clamp((p - a) / (b - a)) * (1 - clamp((p - c) / (d - c))); }
 
+      function measureStage() {
+        var r = stage.getBoundingClientRect();
+        var sy = window.scrollY || window.pageYOffset || 0;
+        stageTop = r.top + sy;
+        stageHeight = stage.offsetHeight;
+        winH = window.innerHeight;
+        stageTotal = Math.max(0, stageHeight - winH);
+        stageBottom = stageTop + stageHeight;
+      }
+
+      function isHeroOnScreen() {
+        var sy = window.scrollY || window.pageYOffset || 0;
+        return (sy + winH > stageTop) && (sy < stageBottom);
+      }
+
       function got(i) { var e = cache[i]; return e && e.ok ? e.img : null; }
-      function want(i) {
-        if (i < 0 || i >= N || cache[i]) return;
-        var im = new Image();
-        var e = { img: im, ok: false };
-        cache[i] = e;
-        im.decoding = 'async';
-        im.onload = function () {
-          if (cache[i] !== e) return;
-          var ready = function () {
-            if (cache[i] !== e) return;
-            if (im.naturalWidth > 0) {
-              e.ok = true;
-              // Redraw immediately if this is the frame currently requested.
-              draw(Math.round(cur));
-            } else {
-              delete cache[i];
-            }
-          };
-          if (im.decode) im.decode().then(ready, ready); else ready();
-        };
-        im.onerror = function () {
-          if (cache[i] === e) delete cache[i];
-        };
-        im.src = url(i);
-      }
-      function manage(c) {
-        // Request nearby frames first; never download the entire sequence at once.
-        for (var d = 0; d <= AHEAD; d++) {
-          if (d === 0) want(c);
-          else { want(c + d); if (d <= BEHIND) want(c - d); }
+
+      function pumpBg() {
+        if (!bgStarted || urgentPending > 0) return;
+        while (bgActive < MAX_BG && bgIndex < N) {
+          var idx = bgIndex++;
+          if (cache[idx]) continue;
+          bgActive++;
+          want(idx, function () {
+            bgActive--;
+            pumpBg();
+          }, false);
         }
-        Object.keys(cache).forEach(function (k) {
-          if (Math.abs(Number(k) - c) > KEEP) {
-            var e = cache[k]; delete cache[k];
-            e.img.onload = e.img.onerror = null;
-            e.img.removeAttribute('src');
-          }
-        });
       }
-      function resize() {
-        var w = Math.max(1, Math.round(cv.clientWidth * dpr));
-        var h = Math.max(1, Math.round(cv.clientHeight * dpr));
-        if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
-        shown = -1;
-        draw(Math.round(cur));
+
+      function startBackgroundLoad() {
+        if (bgStarted) return;
+        bgStarted = true;
+        setTimeout(pumpBg, 0);
       }
-      function draw(i) {
-        var im = got(i), k = i;
-        if (!im) {
-          var maxDist = Math.max(i, N - 1 - i);
-          for (var d = 1; d <= maxDist; d++) {
-            if (i - d >= 0 && (im = got(i - d))) { k = i - d; break; }
-            if (i + d < N && (im = got(i + d))) { k = i + d; break; }
-          }
-        }
-        if (!im) {
-          if (shown === -1) {
-            ctx.fillStyle = '#cfe6fb';
-            ctx.fillRect(0, 0, cv.width, cv.height);
+
+      function want(i, onDone, isUrgent) {
+        if (i < 0 || i >= N) { if (onDone) onDone(); return; }
+        var existing = cache[i];
+        if (existing) {
+          if (onDone) {
+            if (existing.ok || existing.failed) onDone();
+            else existing.waiters.push(onDone);
           }
           return;
         }
-        if (k === shown) return;
-        shown = k;
+        var im = new Image();
+        var urgent = isUrgent !== false;
+        var e = { img: im, ok: false, failed: false, urgent: urgent, waiters: onDone ? [onDone] : [] };
+        cache[i] = e;
+        if (urgent) urgentPending++;
+        im.decoding = 'async';
+        var finished = false;
+
+        function finish(ok) {
+          if (finished) return;
+          finished = true;
+          e.ok = ok;
+          e.failed = !ok;
+          if (e.urgent) urgentPending = Math.max(0, urgentPending - 1);
+          var waiters = e.waiters;
+          e.waiters = [];
+          for (var j = 0; j < waiters.length; j++) waiters[j]();
+          if (ok && isHeroOnScreen()) {
+            var c = Math.round(cur);
+            if (i === c || shown === -1) draw(c);
+          }
+          if (!firstFrameReady) {
+            firstFrameReady = true;
+            startBackgroundLoad();
+          } else if (urgentPending === 0) {
+            pumpBg();
+          }
+        }
+
+        im.onload = function () {
+          if (im.decode) {
+            im.decode().then(
+              function () { finish(im.naturalWidth > 0); },
+              function () { finish(im.naturalWidth > 0); }
+            );
+          } else {
+            finish(im.naturalWidth > 0);
+          }
+        };
+        im.onerror = function () {
+          finish(false);
+        };
+        im.src = url(i);
+      }
+
+      function manage(c) {
+        // Prioritize frames near the current position and destination; never evict loaded frames or cancel in-flight requests.
+        var tIdx = Math.round(target);
+        want(tIdx, null, true);
+        want(c, null, true);
+        if (Math.abs(target - cur) <= 12) {
+          for (var d = 1; d <= AHEAD; d++) {
+            if (c + d < N) want(c + d, null, true);
+            if (d <= BEHIND && c - d >= 0) want(c - d, null, true);
+          }
+        }
+      }
+
+      function paintImage(im) {
         var cw = cv.width, ch = cv.height;
         var scale = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
         var w = im.naturalWidth * scale, h = im.naturalHeight * scale;
-        try { ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h); }
-        catch (err) { shown = -1; }
+        try {
+          ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
+          return true;
+        } catch (err) {
+          return false;
+        }
       }
+
+      function draw(i) {
+        var im = got(i);
+        if (im) {
+          if (i === shown && !needsRedraw) return;
+          if (paintImage(im)) {
+            shown = i;
+            lastImg = im;
+            needsRedraw = false;
+          }
+          return;
+        }
+        // Frame i is not ready: keep drawing the last frame that was shown; never clear the canvas.
+        if (lastImg) {
+          if (needsRedraw && paintImage(lastImg)) {
+            needsRedraw = false;
+          }
+          return;
+        }
+        if (!bgFilled) {
+          bgFilled = true;
+          ctx.fillStyle = '#cfe6fb';
+          ctx.fillRect(0, 0, cv.width, cv.height);
+        }
+      }
+
       function progress() {
-        var r = stage.getBoundingClientRect();
-        var total = stage.offsetHeight - window.innerHeight;
-        return total > 0 ? clamp(-r.top / total) : 0;
+        var sy = window.scrollY || window.pageYOffset || 0;
+        return stageTotal > 0 ? clamp((sy - stageTop) / stageTotal) : 0;
       }
+
       function overlays(p) {
         var o1 = win(p, -1, 0, .20, .36), o2 = win(p, .44, .50, .62, .70), o3 = clamp((p - .93) / .06);
-        b1.style.opacity = o1; b1.style.transform = 'translateY(' + (-(1 - o1) * 14) + 'px)';
-        b2.style.opacity = o2; b2.style.transform = 'translateY(' + ((1 - o2) * 14) + 'px)';
-        b3.style.opacity = o3; s2.style.opacity = o2;
-        hint.style.opacity = 1 - clamp(p / .03);
+        var oh = 1 - clamp(p / .03);
+        if (o1 !== prevO1) {
+          prevO1 = o1;
+          b1.style.opacity = o1;
+          b1.style.transform = 'translateY(' + (-(1 - o1) * 14) + 'px)';
+        }
+        if (o2 !== prevO2) {
+          prevO2 = o2;
+          b2.style.opacity = o2;
+          b2.style.transform = 'translateY(' + ((1 - o2) * 14) + 'px)';
+          s2.style.opacity = o2;
+        }
+        if (o3 !== prevO3) {
+          prevO3 = o3;
+          b3.style.opacity = o3;
+        }
+        if (oh !== prevOh) {
+          prevOh = oh;
+          hint.style.opacity = oh;
+        }
       }
-      var last = performance.now();
+
+      function stopLoop() {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = 0;
+        }
+        last = 0;
+      }
+
       function tick(t) {
-        var dt = Math.min(64, t - last); last = t;
-        var p = progress(); target = p * (N - 1);
+        rafId = 0;
+        if (!isHeroOnScreen()) {
+          last = 0;
+          return;
+        }
+        var dt = last ? Math.min(64, t - last) : 16.67;
+        last = t;
+        var p = progress();
+        target = p * (N - 1);
         cur = reduce ? target : cur + (target - cur) * (1 - Math.pow(.001, dt / 1000 * 1.6));
         if (Math.abs(target - cur) < .01) cur = target;
         var c = Math.round(cur);
-        if (Math.abs(c - mgrAt) >= 2) { manage(c); mgrAt = c; }
-        draw(c); overlays(p);
-        requestAnimationFrame(tick);
+        if (Math.abs(c - mgrAt) >= 2 || !got(c)) {
+          manage(c);
+          mgrAt = c;
+        }
+        draw(c);
+        overlays(p);
+        if (!reduce && Math.abs(target - cur) >= .01 && isHeroOnScreen()) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          last = 0;
+        }
       }
 
-      manage(0);
+      function onScrollFrame(ts) {
+        scrollRaf = 0;
+        if (!isHeroOnScreen()) {
+          stopLoop();
+          var pOff = progress();
+          target = pOff * (N - 1);
+          cur = target;
+          return;
+        }
+        if (reduce) {
+          var pRed = progress();
+          target = pRed * (N - 1);
+          cur = target;
+          var cRed = Math.round(cur);
+          manage(cRed);
+          mgrAt = cRed;
+          draw(cRed);
+          overlays(pRed);
+          return;
+        }
+        if (!rafId) {
+          tick(ts);
+        }
+      }
+
+      function onScroll() {
+        if (scrollRaf) return;
+        scrollRaf = requestAnimationFrame(onScrollFrame);
+      }
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        measureStage();
+        var w = Math.max(1, Math.round(cv.clientWidth * dpr));
+        var h = Math.max(1, Math.round(cv.clientHeight * dpr));
+        if (cv.width !== w || cv.height !== h) {
+          cv.width = w;
+          cv.height = h;
+          needsRedraw = true;
+          bgFilled = false;
+        }
+        var p = progress();
+        target = p * (N - 1);
+        if (reduce || Math.abs(target - cur) < .01) cur = target;
+        var c = Math.round(cur);
+        if (firstFrameReady) {
+          manage(c);
+          mgrAt = c;
+        } else {
+          want(c);
+        }
+        draw(c);
+        overlays(p);
+      }
+
+      if (mql && mql.addEventListener) {
+        mql.addEventListener('change', function (ev) {
+          reduce = ev.matches;
+          if (reduce) {
+            stopLoop();
+            var p = progress();
+            target = p * (N - 1);
+            cur = target;
+            var c = Math.round(cur);
+            manage(c);
+            mgrAt = c;
+            draw(c);
+            overlays(p);
+          }
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (entries[i].target === stage) {
+              if (!entries[i].isIntersecting) {
+                stopLoop();
+              } else if (Math.abs(progress() * (N - 1) - cur) >= .01) {
+                onScroll();
+              }
+            }
+          }
+        }, { threshold: 0 });
+        io.observe(stage);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', resize, { passive: true });
+      window.addEventListener('load', resize, { passive: true });
       resize();
-      requestAnimationFrame(tick);
     })();
 
     // Reveal statement on scroll once
