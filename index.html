@@ -1449,10 +1449,56 @@
           <div class="hl">
             <p class="hi">Hi, I am Abhiraj Rajeev</p>
             <h1>Graphic<br><em>Designer</em> &amp;<br>UI/UX <em>Designer</em></h1>
-            <p class="sub">I turn bold ideas into meaningful visual experiences.</p>
-          </div>
-          <div class="hr">
-            <p class="big">I give them<br><em>shape</em> and meaning</p>
+            <script>
+              (function () {
+                var h1 = document.querySelector('#b1 h1');
+                if (!h1) return;
+                if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                var steps = [];
+                var nodes = [].slice.call(h1.childNodes);
+                var pendingBr = false;
+                for (var i = 0; i < nodes.length; i++) {
+                  var n = nodes[i];
+                  if (n.nodeType === 1 && n.tagName === 'BR') {
+                    pendingBr = true;
+                  } else if (n.nodeType === 1 && n.tagName === 'EM') {
+                    var emWords = n.textContent.trim().split(/\s+/);
+                    for (var j = 0; j < emWords.length; j++) {
+                      if (!emWords[j]) continue;
+                      steps.push({ text: emWords[j], em: true, br: pendingBr && j === 0, space: !pendingBr && steps.length > 0 });
+                    }
+                    pendingBr = false;
+                  } else if (n.nodeType === 3) {
+                    var raw = n.nodeValue;
+                    var hasLeadSpace = /^\s/.test(raw);
+                    var words = raw.trim().split(/\s+/);
+                    for (var k = 0; k < words.length; k++) {
+                      if (!words[k]) continue;
+                      steps.push({ text: words[k], em: false, br: pendingBr && k === 0, space: (k > 0) || (!pendingBr && hasLeadSpace && steps.length > 0) });
+                    }
+                    if (words.length && words[0]) pendingBr = false;
+                  }
+                }
+                if (!steps.length) return;
+                h1.setAttribute('aria-label', steps.map(function (s) { return s.text; }).join(' '));
+                h1.textContent = '';
+                var idx = 0;
+                function typeNext() {
+                  var s = steps[idx++];
+                  if (s.br) h1.appendChild(document.createElement('br'));
+                  else if (s.space) h1.appendChild(document.createTextNode(' '));
+                  if (s.em) {
+                    var em = document.createElement('em');
+                    em.textContent = s.text;
+                    h1.appendChild(em);
+                  } else {
+                    h1.appendChild(document.createTextNode(s.text));
+                  }
+                  if (idx < steps.length) setTimeout(typeNext, 120);
+                }
+                setTimeout(typeNext, 120);
+              })();
+            </script>
           </div>
         </div>
         <div class="beat b2" id="b2">
