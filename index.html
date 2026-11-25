@@ -1270,10 +1270,18 @@
       background: #b01a64 url("assets/contact.webp") 72% center/cover no-repeat
     }
 
-    .contact>* {
+    .contact>*,
+    .contact-copy>* {
       position: absolute;
       left: clamp(1.5rem, 6.9vw, 132px);
       right: 1.5rem
+    }
+
+    .contact-copy {
+      position: absolute;
+      inset: 0;
+      left: 0;
+      right: 0
     }
 
     .contact .c1 {
@@ -1344,13 +1352,38 @@
       .contact {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-        padding: 64px 24px;
+        justify-content: flex-start;
+        min-height: 0;
+        padding: 0;
+        background: linear-gradient(180deg, #b01a64 0%, #c92875 100%);
       }
 
-      .contact>* {
+      .contact-copy {
         position: static;
+        inset: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 24px;
+        max-width: 100%;
+      }
+
+      .contact>*,
+      .contact-copy>* {
+        position: static;
+        max-width: 100%;
+      }
+
+      .contact::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 360px;
+        background: url("assets/contact.webp") 58% bottom / auto 390px no-repeat;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 16%);
+        pointer-events: none;
       }
     }
 
@@ -1840,12 +1873,14 @@
     -->
 
     <section class="contact" id="contact">
-      <h2>Have an idea<br>in mind?</h2>
-      <p class="c3">Let’s make something meaningful.</p>
-      <a class="cta" href="https://wa.me/919496550431?text=Hi%20Abhiraj%2C%20I%27d%20like%20to%20start%20a%20project." target="_blank" rel="noopener">Let's connect <i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#0a0a0a" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg></i></a>
+      <div class="contact-copy">
+        <h2>Have an idea<br>in mind?</h2>
+        <p class="c3">Let’s make something meaningful.</p>
+        <a class="cta" href="https://wa.me/919496550431?text=Hi%20Abhiraj%2C%20I%27d%20like%20to%20start%20a%20project." target="_blank" rel="noopener">Let's connect <i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#0a0a0a" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg></i></a>
+      </div>
     </section>
   </main>
 
